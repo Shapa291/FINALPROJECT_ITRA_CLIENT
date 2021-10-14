@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const URL = "https://elastic-euler-d57950.netlify.app/"
+const URL = "https://elastic-euler-d57950.netlify.app"
 
 //Auth control  ===== AUTH
 export async function GetAuthState() {
-  const response = await axios.get(URL + "auth/auth", {
+  const response = await axios.get(URL + "/auth/auth", {
     headers: {
       accessToken: localStorage.getItem("accessToken"),
     },
@@ -13,7 +13,7 @@ export async function GetAuthState() {
 }
 
 export async function PostSignUser(data) {
-  const response = await axios.post(URL + "auth", {
+  const response = await axios.post(URL + "/auth", {
     username: data.username,
     password: data.password,
   });
@@ -21,7 +21,7 @@ export async function PostSignUser(data) {
 }
 
 export async function PostLogUser(data) {
-  const response = await axios.post(URL + "auth/login", {
+  const response = await axios.post(URL + "/auth/login", {
     username: data.username,
     password: data.password,
   });
@@ -30,30 +30,30 @@ export async function PostLogUser(data) {
 
 //All Problems ===== PROBLEMS
 export async function GetAllProblems() {
-  const response = await axios.get(URL + "problems");
+  const response = await axios.get(URL + "/problems");
   return response.data;
 }
 
 export async function PostProblem(values) {
-  await axios.post(URL + "problems", values, {
+  await axios.post(URL + "/problems", values, {
     headers: { accessToken: localStorage.getItem("accessToken") },
   });
 }
 
 //Problem by id ===== OBJECT
 export async function GetOneProblem(id) {
-  const response = await axios.get(URL + `problems/byId/${id}`);
+  const response = await axios.get(URL + `/problems/byId/${id}`);
   return response.data;
 }
 
 export async function DeleteProblem(id) {
-  const response = await axios.delete(URL + `problems/${id}`);
+  const response = await axios.delete(URL + `/problems/${id}`);
   return response.data;
 }
 
 export async function PutProblemUpdate(id, values) {
   const response = await axios.put(
-    URL +  `problems/${id}`,
+    URL +  `/problems/${id}`,
     values
   );
   return response.data;
@@ -62,7 +62,7 @@ export async function PutProblemUpdate(id, values) {
 //Porblem's ===== COMMENTS
 export async function PostComment(newComment, id) {
   const response = await axios.post(
-    URL + "comments",
+    URL + "/comments",
     {
       commentBody: newComment,
       ProblemId: id,
@@ -77,12 +77,12 @@ export async function PostComment(newComment, id) {
 }
 
 export async function GetComments(id) {
-  const response = await axios.get(URL + `comments/${id}`);
+  const response = await axios.get(URL + `/comments/${id}`);
   return response.data;
 }
 
 export async function DeleteComment(id) {
-  await axios.delete(URL + `comments/${id}`, {
+  await axios.delete(URL + `/comments/${id}`, {
     headers: { accessToken: localStorage.getItem("accessToken") },
   });
 }
@@ -90,7 +90,7 @@ export async function DeleteComment(id) {
 //Problem's ===== RATE
 export async function PostProblemRate(id, value) {
   const response = await axios.post(
-    URL + "rate",
+    URL + "/rate",
     {
       ProblemID: id,
       rate: value,
@@ -101,5 +101,5 @@ export async function PostProblemRate(id, value) {
 }
 
 export async function PutProblemRate(id, average) {
-  await axios.put(URL + `problems/${id}`, { rate: average });
+  await axios.put(URL + `/problems/${id}`, { rate: average });
 }
