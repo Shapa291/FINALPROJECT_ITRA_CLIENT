@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://elastic-euler-d57950.netlify.app"
+const URL = "https://blissful-allen-324a41.netlify.app  "
 
 //Auth control  ===== AUTH
 export async function GetAuthState() {
