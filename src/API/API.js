@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://blissful-allen-324a41.netlify.app  "
+const URL = "https://server-itra-final.herokuapp.com"
 
 //Auth control  ===== AUTH
 export async function GetAuthState() {
