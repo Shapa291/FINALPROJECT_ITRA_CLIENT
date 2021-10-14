@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:3001/"
+const URL = "https://elastic-euler-d57950.netlify.app/"
 
 //Auth control  ===== AUTH
 export async function GetAuthState() {
