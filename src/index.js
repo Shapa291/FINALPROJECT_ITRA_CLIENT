@@ -8,4 +8,9 @@ import "react-bootstrap-table-next/dist/react-bootstrap-table2.css";
 import "react-image-viewer-zoom/dist/style.css";
 import "./i18n";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
