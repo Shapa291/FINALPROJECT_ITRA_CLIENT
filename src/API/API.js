@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:3001";
+const URL = "https://server-itra-final.herokuapp.com";
 const imageURL =
   "https://api.imgbb.com/1/upload?key=0e2db278d43c96605cd5f851491a9e30";
 
