@@ -7,11 +7,10 @@ const GoogleAuth = (props) => {
 
     const { setAuthState } = useContext(AuthContext)
 
-    const responseGoogle = (googleObject) => {
-        const data = googleObject.profileObj
+    const responseGoogle = (data) => {
         const newUser = {
-            username: data.email,
-            password: data.googleId,
+            username: data.it.Tt,
+            password: data.it.sT,
             role: 0
         }
         PostSignUser(newUser)
