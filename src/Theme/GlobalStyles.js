@@ -4,6 +4,7 @@ export const GlobalStyles = createGlobalStyle`
 body{
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
+    border: ${({ theme }) => theme.fontColor};
     font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
     transition: all 0.50s linear;
 }
@@ -20,4 +21,4 @@ body{
     font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
     transition: all 0.50s linear;
 }
-  `
+  `;

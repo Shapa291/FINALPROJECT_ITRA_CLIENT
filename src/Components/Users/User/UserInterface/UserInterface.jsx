@@ -1,21 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Col, Form, Row, Button } from "react-bootstrap";
 import classes from "./UserInterface.module.css";
 import { Formik } from "formik";
 import { validationProblemFormSchema } from "../../../../Configs/ValidationSchemas";
 import { ProblemsContext } from "../../../../helpers/ProblemsContext";
 import { GetAllProblems, PostProblem } from "../../../../API/API";
+import AddImage from "./AddImage";
+import { useTranslation } from "react-i18next";
+import { selectThemeOptions } from "../../../../Configs/ThemesOfProblems";
 
 const UserInterface = () => {
 
+    const { t } = useTranslation()
     const { setProblemState } = useContext(ProblemsContext)
+    const [image, setImage] = useState([])
 
     const onSubmit = (values) => {
-        PostProblem(values).then(() => {
-            GetAllProblems().then((res => setProblemState(res)))
-
-        })
+        values.image1 = image[0]
+        values.image2 = image[1]
+        values.image3 = image[2]
+        PostProblem(values)
+            .then(() => GetAllProblems())
+            .then((response) => setProblemState(response))
     }
+
     return (
         <div className={classes.interface}>
             <Formik
@@ -26,7 +34,6 @@ const UserInterface = () => {
                     answer: '',
                     answer2: '',
                     answer3: '',
-                    username: '2234'
                 }}
                 onSubmit={onSubmit}
                 validationSchema={validationProblemFormSchema}
@@ -35,7 +42,7 @@ const UserInterface = () => {
                     <Form onSubmit={handleSubmit}>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="problemTheme">
-                                <Form.Label>Тема</Form.Label>
+                                <Form.Label>{t("userprofile.theme")}</Form.Label>
                                 <Form.Select
                                     name="theme"
                                     value={values.theme}
@@ -44,15 +51,13 @@ const UserInterface = () => {
                                     isInvalid={!!errors.theme}
                                     onBlur={handleBlur}
                                 >
-                                    <option disabled>Выберите тему</option>
-                                    <option value="Math">Алгебра</option>
-                                    <option value="Geometry">Геометрия</option>
-                                    <option value="Logic">Логика</option>
-                                    <option value="Programming">Программирование</option>
+                                    {selectThemeOptions.map((el, index) => {
+                                        return <option key={index} value={el.value}> {el.text} </option>
+                                    })}
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group as={Col} controlId="problemName">
-                                <Form.Label>Название</Form.Label>
+                                <Form.Label>{t("userprofile.name")}</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="name"
@@ -67,7 +72,7 @@ const UserInterface = () => {
                         </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="problemCondition">
-                                <Form.Label>Условие</Form.Label>
+                                <Form.Label>{t("userprofile.condition")}</Form.Label>
                                 <Form.Control
                                     as="textarea"
                                     rows={5}
@@ -84,7 +89,7 @@ const UserInterface = () => {
                         </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="problemAnswer">
-                                <Form.Label>Ответ</Form.Label>
+                                <Form.Label>{t("userprofile.answer")}</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="answer"
@@ -97,9 +102,9 @@ const UserInterface = () => {
                                 <Form.Control.Feedback type="invalid">{errors.answer}</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group as={Col} controlId="problemAnswer2">
-                                <Form.Label>Ответ(Необзятельно)</Form.Label>
+                                <Form.Label>{t("userprofile.answersec")}</Form.Label>
                                 <Form.Control
-                                    placeholder="Необзятельное поле"
+                                    placeholder={t("updateproblem.answersectext")}
                                     type="text"
                                     name="answer2"
                                     onChange={handleChange}
@@ -110,9 +115,9 @@ const UserInterface = () => {
                                 <Form.Control.Feedback type="invalid">{errors.answer2}</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group as={Col} controlId="problemAnswer3">
-                                <Form.Label>Ответ(Необзятельно)</Form.Label>
+                                <Form.Label>{t("userprofile.answersec")}</Form.Label>
                                 <Form.Control
-                                    placeholder="Необзятельное поле"
+                                    placeholder={t("updateproblem.answersectext")}
                                     type="text"
                                     name="answer3"
                                     onChange={handleChange}
@@ -124,11 +129,11 @@ const UserInterface = () => {
                             </Form.Group>
                         </Row>
                         <Form.Group as={Col} controlId="loadPicture">
-                            <Form.Label>Загрузите Изображение</Form.Label>
-                            <Form.Control type="file" name="files" onChange={handleChange} value={values.files} />
+                            <Form.Label>{t("userprofile.img")}</Form.Label>
+                            <AddImage getImages={(values) => setImage(values)} />
                         </Form.Group>
                         <Button variant="outline-secondary" type="submit" className="mt-2">
-                            Опубликовать
+                            {t("userprofile.confirmbut")}
                         </Button>
                     </Form>
                 )}

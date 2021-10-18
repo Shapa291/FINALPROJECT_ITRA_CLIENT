@@ -3,13 +3,16 @@ import { Container, Col, Form, Row, Button } from 'react-bootstrap'
 import { useParams } from 'react-router'
 import classes from './UpdateProblem.module.css'
 import { Formik } from "formik";
-import { PutProblemUpdate,GetAllProblems } from '../../../../API/API';
+import { PutProblemUpdate, GetAllProblems } from '../../../../API/API';
 import { ProblemsContext } from '../../../../helpers/ProblemsContext';
+import { useTranslation } from 'react-i18next';
+import { selectThemeUpgradeOptions } from '../../../../Configs/ThemesOfProblems';
 
 const UpdateProblem = () => {
 
-    const {setProblemState} = useContext(ProblemsContext)
-    
+    const { setProblemState } = useContext(ProblemsContext)
+
+    const { t } = useTranslation()
     const { id } = useParams()
 
     const onSubmit = (values) => {
@@ -21,12 +24,14 @@ const UpdateProblem = () => {
                 setProblemState(responsee);
             });
         })
+            .then(() => { GetAllProblems() })
+            .then((response) => setProblemState(response))
     }
 
     return (
         <Container className={classes.all}>
-            <h1>Обновление задачи c id:{id}:</h1>
-            <Formik
+            <h1>{t("updateproblem.header")} id:{id}:</h1>
+          <Formik
                 initialValues={{
                     theme: '',
                     name: '',
@@ -37,26 +42,24 @@ const UpdateProblem = () => {
                 }}
                 onSubmit={onSubmit}
             >
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+                {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
                     <Form onSubmit={handleSubmit}>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="problemTheme">
-                                <Form.Label>Тема</Form.Label>
+                                <Form.Label>{t("updateproblem.theme")}</Form.Label>
                                 <Form.Select
                                     name="theme"
                                     value={values.theme}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                 >
-                                    <option disabled>Выберите тему</option>
-                                    <option value="Math">Алгебра</option>
-                                    <option value="Geometry">Геометрия</option>
-                                    <option value="Logic">Логика</option>
-                                    <option value="Programming">Программирование</option>
+                                    {selectThemeUpgradeOptions.map((el, index) => {
+                                        return <option key={index} value={el.value}> {el.text} </option>
+                                    })}
                                 </Form.Select>
                             </Form.Group>
                             <Form.Group as={Col} controlId="problemName">
-                                <Form.Label>Название</Form.Label>
+                                <Form.Label>{t("updateproblem.name")}</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="name"
@@ -68,7 +71,7 @@ const UpdateProblem = () => {
                         </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="problemCondition">
-                                <Form.Label>Условие</Form.Label>
+                                <Form.Label>{t("updateproblem.condition")}</Form.Label>
                                 <Form.Control
                                     as="textarea"
                                     rows={5}
@@ -82,7 +85,7 @@ const UpdateProblem = () => {
                         </Row>
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="problemAnswer">
-                                <Form.Label>Ответ</Form.Label>
+                                <Form.Label>{t("updateproblem.answer")}</Form.Label>
                                 <Form.Control
                                     type="text"
                                     name="answer"
@@ -93,9 +96,9 @@ const UpdateProblem = () => {
                                 <Form.Control.Feedback type="invalid">{errors.answer}</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group as={Col} controlId="problemAnswer2">
-                                <Form.Label>Ответ(Необзятельно)</Form.Label>
+                                <Form.Label>{t("updateproblem.answersec")}</Form.Label>
                                 <Form.Control
-                                    placeholder="Необзятельное поле"
+                                    placeholder={t("updateproblem.answersectext")}
                                     type="text"
                                     name="answer2"
                                     onChange={handleChange}
@@ -103,9 +106,9 @@ const UpdateProblem = () => {
                                 />
                             </Form.Group>
                             <Form.Group as={Col} controlId="problemAnswer3">
-                                <Form.Label>Ответ(Необзятельно)</Form.Label>
+                                <Form.Label>{t("updateproblem.answersec")}</Form.Label>
                                 <Form.Control
-                                    placeholder="Необзятельное поле"
+                                    placeholder={t("updateproblem.answersectext")}
                                     type="text"
                                     name="answer3"
                                     onChange={handleChange}
@@ -113,11 +116,8 @@ const UpdateProblem = () => {
                                 />
                             </Form.Group>
                         </Row>
-                        <Form.Group as={Col} controlId="loadPicture">
-                            <Form.Label>Загрузите Изображение</Form.Label>
-                        </Form.Group>
                         <Button variant="outline-secondary" type="submit" className="mt-2">
-                            Обновить 
+                            {t("updateproblem.updatebut")}
                         </Button>
                     </Form>
                 )}

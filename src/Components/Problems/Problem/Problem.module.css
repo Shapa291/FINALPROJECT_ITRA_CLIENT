@@ -24,3 +24,9 @@
 .delete{
     float: right;
 }
+.image{
+    width: 320px;
+    height: 320px;
+    padding: 10px;
+    display: block;
+}

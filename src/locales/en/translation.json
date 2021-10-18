@@ -1,0 +1,103 @@
+{
+  "search": "search...",
+  "author": "Author",
+  "change_theme": "switch theme",
+  "changelang": "https://cdn.countryflags.com/thumbs/russia/flag-round-250.png",
+  "register": {
+    "reghead": "Sing in",
+    "regusername": "Username",
+    "regpass": "Password",
+    "regpassconfirm": "Confirm password",
+    "regbut": "Sing in",
+    "reggoogle": "Sign in with Google",
+    "regfacebook": "Sign in with Facebook"
+  },
+  "login": {
+    "loghead": "Log in",
+    "logusername": "Username",
+    "logpass": "Password",
+    "logbut": "LogIn",
+    "loggoogle": "Sign in withю Google",
+    "logfacebook": "Sign in with Facebook"
+  },
+  "navbar": {
+    "home": "Home",
+    "problems": "Problems",
+    "profile": "Profile",
+    "admin": "Admin",
+    "searchbut": "Search",
+    "searcgtext": "Search",
+    "reg": "Registration",
+    "signin": "LogIn",
+    "logout": "LogOut"
+  },
+  "homepage": {
+    "top5new": "TOP-5 Freshest",
+    "top5rate": "TOP-5 Highest rated",
+    "name": "Name",
+    "date": "Date of reg",
+    "rate": "Rate",
+    "theme": "Theme",
+    "condition": "Condition",
+    "solvebut": "Solve"
+  },
+  "problem": {
+    "name": "Name",
+    "user": "User",
+    "theme": "Theme",
+    "condition": "Condition",
+    "solvetext": "Put your answer",
+    "solvebut": "Answer",
+    "rateproblem": "Rate the Problem",
+    "comments": "Comments",
+    "commenttext": "Type a comment...",
+    "commentbut": "Comment",
+    "answerauth": "Authorize to answer",
+    "rateauth": "Authorize to rate",
+    "commentauth": "Authorize to leave a comment"
+  },
+  "problemstable": {
+    "header": "All problems",
+    "username": "Username",
+    "theme": "Theme of problem",
+    "name": "Name of problem",
+    "data": "Date of creation",
+    "rate": "Rate",
+    "solvebut": "Solve",
+    "themetextholder": "Theme...",
+    "nametextholder": "Name..."
+  },
+  "userprofile": {
+    "toolbar": {
+      "update": "Edit problem",
+      "delete": "Delete problem",
+      "browse": "Browse mode"
+    },
+    "countofsolved": "Number of solved problems",
+    "theme": "Theme",
+    "name": "Name",
+    "condition": "Condition",
+    "answer": "Answer",
+    "answersec": "Answer(optional)",
+    "answersectext": "Optioanl field",
+    "img": "Upload Images",
+    "imgform": "Migrate one or more files to upload",
+    "imgdrop": "Release the files",
+    "confirmbut": "Publish",
+    "header": "Published problems",
+    "solvedproblems": "Solved problems"
+  },
+  "updateproblem": {
+    "header": "Updating Problems with",
+    "theme": "Theme",
+    "name": "Name",
+    "condition": "Condition",
+    "answer": "Answer",
+    "answersec": "Answer(optional)",
+    "answersectext": "Optioanl field",
+    "updatebut": "Update"
+  },
+  "admin" : {
+    "header": "Administrato panel"
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Button, Container, Form, FormControl, Nav, Navbar } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import logo from './logo.jpg'
 import { Link } from "react-router-dom";
 import LogModal from "./LogModal";
@@ -7,11 +7,15 @@ import SignModal from "./SignModal";
 import { AuthContext } from "../../helpers/AuthContext";
 import { useHistory } from 'react-router';
 import Toggler from "../../Theme/Toggler";
+import Dropdown from "../changelanguage/Dropdown";
+import { useTranslation } from "react-i18next";
 
 const Header = (props) => {
 
+    const { t } = useTranslation();
+
     const history = useHistory()
-    
+
     const [showSigh, setShowSign] = useState(false);
     const [showLog, setShowLog] = useState(false)
 
@@ -25,7 +29,7 @@ const Header = (props) => {
 
     const logOut = () => {
         localStorage.removeItem("accessToken")
-        setAuthState({ username: "", id: 0, status: false }) 
+        setAuthState({ username: "", id: 0, status: false })
         history.push(`/`)
     }
 
@@ -45,39 +49,31 @@ const Header = (props) => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto w-100">
-                            <Nav.Link as={Link} to="/">Главная</Nav.Link>
-                            <Nav.Link as={Link} to="/problems">Задачи</Nav.Link>
+                            <Nav.Link as={Link} to="/">{t("navbar.home")}</Nav.Link>
+                            <Nav.Link as={Link} to="/problems">{t("navbar.problems")}</Nav.Link>
                             {authState.status ? (
                                 <>
-                                    <Nav.Link as={Link} to="/profile">Профиль</Nav.Link>
-                                    <Nav.Link as={Link} to="/admin">Админка</Nav.Link>
+                                    <Nav.Link as={Link} to="/profile">{t("navbar.profile")}</Nav.Link>
+                                    {localStorage.getItem("role") === "1" &&
+                                        <Nav.Link as={Link} to="/admin">Админка</Nav.Link>}
                                 </>
-                            ):
-                            <></>}
-                        <Toggler  theme={props.theme} toggleTheme={props.themeToggler}/>
-                        <Button className="ms-2" variant = "outline-secondary">Язык</Button>
+                            ) :
+                                <></>}
+                            <Toggler theme={props.theme} toggleTheme={props.themeToggler} />
+                            <Dropdown />
                         </Nav>
-                        <Form className='d-flex'>
-                            <FormControl
-                                type="text"
-                                placeholder="Search"
-                                className="ms-20"
-                            />
-                            <Button variant="outline-secondary" className="ms-2">Поиск</Button>
-                        </Form>
                         {!authState.status ? (
                             <>
-                                <Button variant="outline-secondary" className="ms-5" onClick={handleShowSign}>Зарегистрироваться</Button>
-                                <Button variant="outline-secondary" className="ms-2" onClick={handleShowLog}>Войти</Button>
+                                <Button variant="outline-secondary" className="ms-5" onClick={handleShowSign}>{t("navbar.reg")}</Button>
+                                <Button variant="outline-secondary" className="ms-2" onClick={handleShowLog}>{t("navbar.signin")}</Button>
                             </>
                         )
                             : (
-                                <Button variant="outline-secondary" className="ms-2" onClick={logOut}>Выйти</Button>
+                                <Button variant="outline-secondary" className="ms-2" onClick={logOut}>{t("navbar.logout")}</Button>
                             )}
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
             <LogModal className='modal' show={showLog} onHide={() => handleCloseLog()} />
             <SignModal show={showSigh} onHide={() => handleCloseSign()} />
         </>

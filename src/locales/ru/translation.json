@@ -1,0 +1,103 @@
+{
+  "search": "поиск...",
+  "author": "Автор",
+  "change_theme": "сменить тему",
+  "changelang": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/United-kingdom_flag_icon_round.svg/1200px-United-kingdom_flag_icon_round.svg.png",
+  "register": {
+    "reghead": "Зарегестрируйтесь",
+    "regusername": "Имя пользователя",
+    "regpass": "Пароль",
+    "regpassconfirm": "Подтвердите пароль",
+    "regbut": "Зарегестрироваться",
+    "reggoogle": "Зайти с помощью Google",
+    "regfacebook": "Зайти с помощью Facebook"
+  },
+  "login": {
+    "loghead": "Войдите в аккаунт",
+    "logusername": "Имя пользователя",
+    "logpass": "Пароль",
+    "logbut": "Войти",
+    "loggoogle": "Зайти с помощью Google",
+    "logfacebook": "Зайти с помощью Facebook"
+  },
+  "navbar": {
+    "home": "Главная",
+    "problems": "Задачи",
+    "profile": "Профиль",
+    "admin": "Админка",
+    "searchbut": "Поиск",
+    "searcgtext": "Поиск",
+    "reg": "Регистрация",
+    "signin": "Войти",
+    "logout": "Выйти"
+  },
+  "homepage": {
+    "top5new": "ТОП-5 Самых свежих",
+    "top5rate": "ТОП-5 Самых рейтинговых",
+    "name": "Название",
+    "date": "Дата создания",
+    "rate": "Рейтинг",
+    "theme": "Тема",
+    "condition": "Условие",
+    "solvebut": "Решить"
+  },
+  "problem": {
+    "name": "Название",
+    "user": "Пользователь",
+    "theme": "Тема",
+    "condition": "Условие",
+    "solvetext": "Введите ответ",
+    "solvebut": "Ответить",
+    "rateproblem": "Оцените задачу",
+    "comments": "Comments",
+    "commenttext": "Напишите комментарий...",
+    "commentbut": "Комментировать",
+    "answerauth": "Авторизуйтесь чтобы решить",
+    "rateauth": "Авторизуйтесь чтобы оценить задачу",
+    "commentauth": "Авторизуйтесь чтобы оставить комментарий"
+  },
+  "problemstable": {
+    "header": "Все задачи",
+    "username": "Пользователь",
+    "theme": "Тема",
+    "name": "Название",
+    "data": "Дата создания",
+    "rate": "Рейтинг",
+    "solvebut": "Решить",
+    "themetextholder": "Тема...",
+    "nametextholder": "Название..."
+  },
+  "userprofile": {
+    "toolbar": {
+      "update": "Редактировать задачу",
+      "delete": "Удалить задачу",
+      "browse": "Режим просмотра задачи"
+    },
+    "countofsolved": "Количество решенных задач",
+    "theme": "Тема",
+    "name": "Название",
+    "condition": "Условие",
+    "answer": "Ответ",
+    "answersec": "Ответ(по желанию.)",
+    "answersectext": "Опциональное поле",
+    "img": "Загрузите Изображания",
+    "imgform": "Перенесите один или несколько файлов для отправки",
+    "imgdrop": "Отпустите файлы",
+    "confirmbut": "Опубликовать",
+    "header": "Опубликованные задачи",
+    "solvedproblems": "Решенные задачи"
+  },
+  "updateproblem": {
+    "header": "Обновление задачи c",
+    "theme": "Тема",
+    "name": "Название",
+    "condition": "Условие",
+    "answer": "Ответ",
+    "answersec": "Ответ(по желанию.)",
+    "answersectext": "Опциональное поле",
+    "updatebut": "Обновить"
+  },
+  "admin" : {
+    "header": "Панель Администратора"
+  }
+}

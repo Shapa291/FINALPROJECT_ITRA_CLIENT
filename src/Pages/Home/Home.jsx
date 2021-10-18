@@ -6,8 +6,8 @@ import Rate from "../../Components/HomeProblem/TopFiveRate.jsx";
 const Home = () => {
     return (
         <Container>
-            <TopFiveNew/>
-            <Rate/>
+            <TopFiveNew />
+            <Rate />
         </Container>
     )
 }
